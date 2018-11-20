@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ices>
     <!-- run in background -->
-    <background>0</background>
+    <background>1</background>
     <!-- where logs, etc go. -->
     <logpath>/var/log/ices</logpath>
     <logfile>ices.log</logfile>
@@ -32,7 +32,7 @@
         <input>
             <module>playlist</module>
             <param name="type">basic</param>
-            <param name="file">playlist/default.txt</param>
+            <param name="file">/etc/ices2/playlist/default.txt</param>
             <!-- random play -->
             <param name="random">1</param>
             <!-- if the playlist get updated that start at the beginning -->
