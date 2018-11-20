@@ -14,6 +14,10 @@ The generated docker images can be run with the commands:
 
 ```docker run -d -p 8001:8001 ices:latest```
 
+You can deploy the images to Kubernetes with the command:
+
+```kubectl create -f docker-icecast/deploy -f docker-ices/deploy```
+
 **NOTES**
 
 - Early development limitations
