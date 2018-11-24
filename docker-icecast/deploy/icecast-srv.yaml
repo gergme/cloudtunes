@@ -1,14 +1,13 @@
-apiVersion: v1
-kind: ReplicationController
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
 metadata:
-  namespace: radio
   name: icecast-srv
-  labels:
-    app: icecast-srv
 spec:
-  replicas: 1
   selector:
-    app: icecast-srv
+    matchLabels:
+      app: icecast-srv
+  replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
@@ -31,8 +30,9 @@ spec:
   clusterIP: 10.105.178.10
   ports:
     - protocol: TCP
-      name: http
+      name: audio-stream
       port: 8000
+      nodePort: 30420
       targetPort: 8000
   selector:
     app: icecast-srv

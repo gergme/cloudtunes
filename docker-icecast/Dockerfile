@@ -17,6 +17,7 @@ RUN apt-get -qq -y update && \
 VOLUME ["/config", "/var/log/icecast2", "/etc/icecast2"]
 
 ADD ./etc /etc
+ADD ./usr /usr
 RUN chown -R icecast2 /etc/icecast2
 
 # Add supervisord conf, bootstrap.sh files

@@ -2,37 +2,37 @@
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: ices-station
+  name: radio-fe-app
 spec:
   selector:
     matchLabels:
-      app: ices-station
+      app: radio-fe-app
   replicas: 1 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
-        app: ices-station
+        app: radio-fe-app
     spec:
       containers:
-      - name: ices-station
-        image: localhost:5000/ices:latest
+      - name: radio-fe-app
+        image: localhost:5000/radio-frontend:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8001
+        - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
   namespace: radio
-  name: ices-station
+  name: radio-fe-app
 spec:
   type: LoadBalancer
-  clusterIP: 10.105.178.11
+  clusterIP: 10.105.178.100
   ports:
     - protocol: TCP
       name: http
-      port: 8001
-      targetPort: 8001
+      port: 80
+      targetPort: 80
   selector:
-    app: ices-station
+    app: radio-fe-app
 ---
