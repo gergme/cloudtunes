@@ -32,4 +32,6 @@ You can deploy the images to Kubernetes with the command:
 - Create PVC for OGG files
 - Modify front-end to add OGG files
 - Modify front-end to allow playlist reloads
+- Modify front-end to allow multiple stations to be displayed
 - Modify configuration files to act as templates
+- Modify configuration files to allow multiple stations per icecast server
