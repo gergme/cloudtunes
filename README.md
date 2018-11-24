@@ -8,11 +8,15 @@ To build the cloudtune images from the Dockerfiles, run the commands:
 
 ```docker build -t ices:latest ./docker-ices/```
 
+```docker build -t radio-frontend:latest ./docker-frontend/```
+
 The generated docker images can be run with the commands:
 
 ```docker run -d -p 8000:8000 icecast:latest```
 
 ```docker run -d -p 8001:8001 ices:latest```
+
+```docker run -d -p 80:80 -p 443:443 radio-frontend:latest```
 
 You can deploy the images to Kubernetes with the command:
 
