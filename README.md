@@ -26,3 +26,6 @@ You can deploy the images to Kubernetes with the command:
 **TODO**
 
 - Create PVC for OGG files
+- Modify front-end to add OGG files
+- Modify front-end to allow playlist reloads
+- Modify configuration files to act as templates
