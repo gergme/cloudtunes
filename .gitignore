@@ -1,6 +1,2 @@
-buildRadio.sh
-buildTwo.sh
-docker-station2/*
-*~
-
-radioStats.sh
+buildCloud.sh
+docker-ices/data/*

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: ices-station
-        image: localhost:5000/ices:latest
+        image: 127.0.0.1:32000/docker-ices:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8001
@@ -26,12 +26,13 @@ metadata:
   namespace: radio
   name: ices-station
 spec:
-  type: LoadBalancer
-  clusterIP: 10.105.178.11
+  type: NodePort
+  clusterIP: 10.152.183.11
   ports:
     - protocol: TCP
       name: http
       port: 8001
+      nodePort: 30400
       targetPort: 8001
   selector:
     app: ices-station

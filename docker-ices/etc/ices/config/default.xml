@@ -56,7 +56,7 @@
             <!-- Server details:
                 You define hostname and port for the server here, along with
                 the source password and mountpoint.  -->
-            <hostname>10.105.178.10</hostname>
+            <hostname>10.152.183.200</hostname>
             <port>8000</port>
             <password>dr!pepper83</password>
             <mount>/default.ogg</mount>
