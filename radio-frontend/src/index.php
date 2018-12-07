@@ -44,6 +44,13 @@ $(document).ready(function(){
 });
 //]]>
 </script>
+<script type="text/javascript">
+$(document).ready(function(){
+setInterval(function(){
+$("#jp-nowplaying").load('streaminfo.php')
+}, 10000);
+});
+</script>
 </head>
 <body>
 <div id="jquery_jplayer_1" class="jp-jplayer"></div>
@@ -64,6 +71,7 @@ $(document).ready(function(){
 		<div class="jp-details">
 			<div class="jp-title" aria-label="title">&nbsp;</div>
 		</div>
+		<div id="jp-nowplaying" class="jp-nowplaying">Loading...</div>
 		<div class="jp-no-solution">
 			<span>Update Required</span>
 			To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.

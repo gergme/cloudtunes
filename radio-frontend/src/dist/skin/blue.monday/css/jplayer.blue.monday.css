@@ -351,6 +351,11 @@
   font-size: .72em;
   font-weight: bold; }
 
+.jp-nowplaying {
+  width: 100%;
+  font-size: 10px;
+  font-weight: normal; }
+
 .jp-playlist ul {
   list-style-type: none;
   margin: 0;

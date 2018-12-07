@@ -12,7 +12,7 @@ RUN mkdir -p /etc/ices2
 ADD etc/ices/ /etc/ices2
 ADD data/ /data
 RUN /etc/ices2/update_songs.sh
-#RUN /etc/ices2/process_songs.sh
+RUN /etc/ices2/process_songs.sh
 
 # Add supervisord conf, bootstrap.sh files
 COPY container-files /
