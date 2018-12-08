@@ -54,29 +54,31 @@ $("#jp-nowplaying").load('streaminfo.php')
 </script>
 </head>
 <body>
-
 <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-<div id="jp_container_1" class="jp-audio">
-	<div class="jp-controls">
-		<a class="jp-play"></a>
-		<a class="jp-pause"></a>
-	</div>
-	<div class="jp-bar">
-		<div class="jp-seek-bar">
-			<!-- <div class="jp-play-bar"></div> # NO SEEK BAR -->
-			<div class="jp-duration"></div>
-			<div class="jp-title">&nbsp;</div>
+<div id="jp_container_1" class="jp-audio-stream" role="application" aria-label="media player">
+	<div class="jp-type-single">
+		<div class="jp-gui jp-interface">
+			<div class="jp-controls">
+				<button class="jp-play" role="button" tabindex="0">play</button>
+			</div>
+			<div class="jp-volume-controls">
+				<button class="jp-mute" role="button" tabindex="0">mute</button>
+				<button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+				<div class="jp-volume-bar">
+					<div class="jp-volume-bar-value"></div>
+				</div>
+			</div>
+		</div>
+		<div class="jp-details">
+			<div class="jp-title" aria-label="title">&nbsp;</div>
+		</div>
+		<div id="jp-nowplaying" class="jp-nowplaying">Loading...</div>
+		<div class="jp-no-solution">
+			<span>Update Required</span>
+			To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
 		</div>
 	</div>
 </div>
-<div id="jp_container_1" class="jp-audio">
-	<div class="jp-box">
-		<div id="jp-nowplaying" class="jp-title">Now loading...</div>
-	</div>
-	<div class="jp-no-solution">
-		Media Player Error<br />
-		Update your browser or Flash plugin
-	</div>
-</div>
 </body>
+
 </html>
