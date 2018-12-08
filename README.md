@@ -35,3 +35,7 @@ You can deploy the images to Kubernetes with the command:
 - Modify front-end to allow multiple stations to be displayed
 - Modify configuration files to act as templates
 - Modify configuration files to allow multiple stations per icecast server
+
+**SCREENSHOT**
+
+![Alt text](https://cloudtunes.us/cloudtunes-ss.png)
