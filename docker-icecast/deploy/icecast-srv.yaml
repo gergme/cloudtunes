@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: icecast-srv
-        image: 127.0.0.1:32000/docker-icecast:latest
+        image: localhost:5000/docker-icecast:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
@@ -27,7 +27,7 @@ metadata:
   name: icecast-srv
 spec:
   type: NodePort
-  clusterIP: 10.152.183.200
+  clusterIP: 10.96.0.200
   ports:
     - protocol: TCP
       name: audio-stream

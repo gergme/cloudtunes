@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: radio-fe-app
-        image: 127.0.0.1:32000/radio-frontend:latest
+        image: localhost:5000/radio-frontend:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -27,7 +27,7 @@ metadata:
   name: radio-fe-app
 spec:
   type: LoadBalancer
-  clusterIP: 10.152.183.100
+  clusterIP: 10.96.0.100
   ports:
     - protocol: TCP
       name: http

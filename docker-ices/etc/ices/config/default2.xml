@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<ices>
+    <background>1</background>
+    <logpath>/var/log/ices</logpath>
+    <logfile>ices.log</logfile>
+    <loglevel>4</loglevel>
+    <consolelog>0</consolelog>
+    <stream>
+        <metadata>
+            <name>CloudTunes Classic Rock</name>
+            <genre>Classic Rock</genre>
+            <description>A collection of Classic Rock songs to demonstrate CloudTunes</description>
+        </metadata>
+        <input>
+            <module>playlist</module>
+            <param name="type">basic</param>
+            <param name="file">/etc/ices2/playlist/default1.txt</param>
+            <param name="random">1</param>
+            <param name="restart-after-reread">0</param>
+            <param name="once">0</param>
+        </input>
+        <instance>
+            <hostname>icecast-srv</hostname>
+            <port>8001</port>
+            <password>dr!pepper83</password>
+            <mount>/default2.ogg</mount>
+            <reconnectdelay>2</reconnectdelay>
+            <reconnectattempts>5</reconnectattempts> 
+            <maxqueuelength>80</maxqueuelength>
+            <encode>  
+                <nominal-bitrate>128000</nominal-bitrate>
+                <samplerate>44100</samplerate>
+                <channels>2</channels>
+            </encode>
+        </instance>
+
+	</stream>
+</ices>

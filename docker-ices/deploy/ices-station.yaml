@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: ices-station
-        image: 127.0.0.1:32000/docker-ices:latest
+        image: localhost:5000/docker-ices:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8001
@@ -27,7 +27,7 @@ metadata:
   name: ices-station
 spec:
   type: NodePort
-  clusterIP: 10.152.183.11
+  clusterIP: 10.96.0.11
   ports:
     - protocol: TCP
       name: http
