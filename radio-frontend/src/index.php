@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 	var stream = {
 		title: "Demo Radio Station",
-		oga: "http://icecast-srv:30420/default.ogg"
+		oga: "http://10.96.0.200:30420/default0.ogg"
 	},
 	ready = false;
 
