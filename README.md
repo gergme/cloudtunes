@@ -26,6 +26,7 @@ You can deploy the images to Kubernetes with the command:
 
 - Early development limitations
   - OGG files must be placed in docker-ices/data/ folder
+  - Filenames of OGG files MUST be in ARTIST - TITLE format for 'Now Playing' to work properly
 
 **TODO**
 
