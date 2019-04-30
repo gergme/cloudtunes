@@ -63,8 +63,8 @@ $("#jp-nowplaying").load('streaminfo.php')
 	</div>
 	<div class="jp-bar">
 		<div class="jp-seek-bar">
-			<!-- <div class="jp-play-bar"></div> # NO SEEK BAR -->
-			<!-- <div class="jp-duration"></div> # NO DURATION COUNTER -->
+			<!-- <div class="jp-play-bar"></div> -->
+			<div class="jp-duration"></div>
 			<div class="jp-title">&nbsp;</div>
 		</div>
 	</div>

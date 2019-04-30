@@ -28,8 +28,9 @@ while test $# -gt 0; do
 					version
 					echo "options:"
 					echo "-h, --help		Its what youre looking at!"
-					echo "-b, --build		Build CloudTunes"
-					echo "-l, --launch		Launch CloudTunes after build"
+					echo "-b, --build		(Re)build CloudTunes docker images"
+					echo "-B, --browser		Launch CloudTunes service in browser"
+					echo "-l, --launch		Launch CloudTunes"
 					echo "-d, --destroy		Destroy CloudTunes"
 					echo "-v, --version		Show version"
 					exit 0
@@ -42,6 +43,10 @@ while test $# -gt 0; do
 						docker push ${REGISTRY_HOST}:${REGISTRY_PORT}/${MDIR%/}:latest
 					done
 					shift
+					;;
+			-B|--browser)
+					minikube service -n radio radio-fe-app
+					exit 0
 					;;
 			-l|--launch)
 					switchNS
