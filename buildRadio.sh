@@ -18,13 +18,53 @@ function switchNS {
 }
 
 # Create namespace
+function createNS {
 [ ${LAUNCH_AFTER_BUILD} == "true" ] && kubectl create ns ${LAUNCH_NAMESPACE} && switchNS
+}
 
-for MDIR in `ls -d */`; do
-	docker build -t ${REGISTRY_HOST}:${REGISTRY_PORT}/${MDIR%/}:latest ./${MDIR}
-	docker push ${REGISTRY_HOST}:${REGISTRY_PORT}/${MDIR%/}:latest
-
-	[ ${LAUNCH_AFTER_BUILD} == "true" ] && kubectl apply -f ${MDIR}/deploy/
+while test $# -gt 0; do
+		case "$1" in
+			-h|--help)
+					version
+					echo "options:"
+					echo "-h, --help		Its what youre looking at!"
+					echo "-b, --build		Build CloudTunes"
+					echo "-l, --launch		Launch CloudTunes after build"
+					echo "-d, --destroy		Destroy CloudTunes"
+					echo "-v, --version		Show version"
+					exit 0
+					;;
+			-b|--build)
+					createNS
+					switchNS
+					for MDIR in `ls -d */`; do
+						docker build -t ${REGISTRY_HOST}:${REGISTRY_PORT}/${MDIR%/}:latest ./${MDIR}
+						docker push ${REGISTRY_HOST}:${REGISTRY_PORT}/${MDIR%/}:latest
+					done
+					shift
+					;;
+			-l|--launch)
+					switchNS
+					for MDIR in `ls -d */`; do
+						kubectl create -f ${MDIR}/deploy/
+					done
+					exit 0
+					;;
+			-d|--destroy)
+					switchNS
+					for MDIR in `ls -d */`; do
+						kubectl delete -f ${MDIR}/deploy/
+					done
+					exit 0
+					;;
+			-v|--version)
+					echo "0.0.1"
+					exit 0
+					;;
+			*)
+					break
+					;;
+					esac
 done
-
+echo ":)"
 exit 0
