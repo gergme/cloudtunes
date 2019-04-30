@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <!-- Website Design By: www.happyworm.com -->
-<title>Default Radio Station [Electronic Demo]</title>
+<title>Default Radio Station [Demo]</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <!-- <link href="dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" /> -->
 <link href="dist/skin/flat.audio/css/flat.audio.css" rel="stylesheet" type="text/css" />
@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 	var stream = {
 		title: "Demo Radio Station",
-		oga: "http://10.96.0.200:30420/default0.ogg"
+		oga: "http://192.168.99.100:30420/default0.ogg"
 	},
 	ready = false;
 
@@ -64,7 +64,7 @@ $("#jp-nowplaying").load('streaminfo.php')
 	<div class="jp-bar">
 		<div class="jp-seek-bar">
 			<!-- <div class="jp-play-bar"></div> # NO SEEK BAR -->
-			<div class="jp-duration"></div>
+			<!-- <div class="jp-duration"></div> # NO DURATION COUNTER -->
 			<div class="jp-title">&nbsp;</div>
 		</div>
 	</div>

@@ -10,7 +10,7 @@ command -v kubectx >/dev/null 2>&1 || { echo >&2 "I require kubectx but it's not
 command -v kubens >/dev/null 2>&1 || { echo >&2 "I require kubens but it's not installed.  Aborint."; exit 1; }
 
 LAUNCH_NAMESPACE="radio"
-LAUNCH_AFTER_BUILD="true"
+LAUNCH_AFTER_BUILD="false"
 
 function switchNS {
 	kubectx ${K8S_CONTEXT}
