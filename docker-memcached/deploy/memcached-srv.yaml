@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: memcached-srv
+spec:
+  selector:
+    matchLabels:
+      app: memcached-srv
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: memcached-srv
+    spec:
+      containers:
+      - name: memcached-srv
+        image: localhost:5000/docker-memcached:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 11211
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: radio
+  name: memcached-srv
+spec:
+  type: NodePort
+  clusterIP: 10.96.0.240
+  ports:
+    - protocol: TCP
+      name: audio-stream
+      port: 11211
+      nodePort: 31211
+      targetPort: 11211
+  selector:
+    app: memcached-srv
+---
