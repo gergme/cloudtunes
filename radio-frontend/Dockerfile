@@ -1,6 +1,6 @@
 FROM php:7.2.10-fpm-alpine
 
-LABEL maintainer="Ric Harvey <ric@ngd.io>"
+LABEL maintainer="Greg Holthaus <gerg@gerg.me>"
 
 ENV php_conf /usr/local/etc/php-fpm.conf
 ENV fpm_conf /usr/local/etc/php-fpm.d/www.conf
@@ -190,7 +190,6 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
     freetype-dev \
     sqlite-dev \
     taglib \
-    memcached \
     libjpeg-turbo-dev && \
     docker-php-ext-configure gd \
       --with-gd \
@@ -217,6 +216,18 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
 #    apk del .sys-deps
 #    ln -s /usr/bin/php7 /usr/bin/php
 
+ENV MEMCACHED_DEPS zlib-dev libmemcached-dev cyrus-sasl-dev
+RUN apk add --no-cache --update libmemcached-libs zlib
+RUN set -xe \
+    && apk add --no-cache --update --virtual .phpize-deps $PHPIZE_DEPS \
+    && apk add --no-cache --update --virtual .memcached-deps $MEMCACHED_DEPS \
+    && git clone -b php7 https://github.com/php-memcached-dev/php-memcached /usr/src/php/ext/memcached \
+    && docker-php-ext-configure /usr/src/php/ext/memcached \
+        --disable-memcached-sasl \
+    && docker-php-ext-install /usr/src/php/ext/memcached \
+    && rm -rf /usr/src/php/ext/memcached \
+    && apk del .memcached-deps
+    
 ADD conf/supervisord.conf /etc/supervisord.conf
 
 # Copy our nginx config

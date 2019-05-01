@@ -48,8 +48,9 @@ $(document).ready(function(){
 <script type="text/javascript">
 $(document).ready(function(){
 setInterval(function(){
-$("#jp-nowplaying").load('streaminfo.php')
-}, 10000);
+//$("#jp-nowplaying").load('streaminfo.php'),
+$("#jp-box").load(location.href + " #jp-box");
+}, 15000);
 });
 </script>
 </head>
@@ -70,8 +71,8 @@ $("#jp-nowplaying").load('streaminfo.php')
 	</div>
 </div>
 <div id="jp_container_1" class="jp-audio">
-	<div class="jp-box">
-		<div id="jp-nowplaying" class="jp-title">Now loading...</div>
+	<div id="jp-box" class="jp-box" style="background-image:url('<?php require_once "albumart.php"; ?>'); background-repeat: no-repeat; background-position: center bottom;">
+		<div id="jp-nowplaying" class="jp-title"><?php require_once "streaminfo.php"; ?></div>
 	</div>
 	<div class="jp-no-solution">
 		Media Player Error<br />

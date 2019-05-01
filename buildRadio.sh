@@ -32,6 +32,7 @@ while test $# -gt 0; do
 					echo "-B, --browser		Launch CloudTunes service in browser"
 					echo "-l, --launch		Launch CloudTunes"
 					echo "-d, --destroy		Destroy CloudTunes"
+					echo "-F, --full		Destroy, rebuild, then relaunch CloudTunes"
 					echo "-v, --version		Show version"
 					exit 0
 					;;
@@ -62,6 +63,16 @@ while test $# -gt 0; do
 					done
 					exit 0
 					;;
+			-F|--full)
+					switchNS
+					for MDIR in `ls -d */`; do
+                                                kubectl delete -f ${MDIR}/deploy
+                                        	docker build -t ${REGISTRY_HOST}:${REGISTRY_PORT}/${MDIR%/}:latest ./${MDIR}
+                                        	docker push ${REGISTRY_HOST}:${REGISTRY_PORT}/${MDIR%/}:latest
+                                        	kubectl create -f ${MDIR}/deploy/
+                                        done
+                                        exit 0
+                                        ;;
 			-v|--version)
 					echo "0.0.1"
 					exit 0
