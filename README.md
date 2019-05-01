@@ -1,6 +1,9 @@
 # CloudTune
 
-## Installation
+## NOTICE: This is in early development and works with Minikube -- you'll
+## need to modify things to work directly with your Docker/Kubernetes
+
+### Installation
 
 To build the cloudtune images from the Dockerfiles, run the commands:
 
