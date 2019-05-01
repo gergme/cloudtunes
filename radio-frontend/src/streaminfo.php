@@ -13,7 +13,8 @@ $cacheTitle = $m->get('title');
 $string = file_get_contents("http://192.168.99.100:30420/status-json.xsl");
 $json_a = json_decode($string, true);
 
-if ( $title != $cacheTitle ) {
+if ( $title != $cacheTitle OR $cacheTitle == null) {
+	$m->set('changed', true);
 	$m->set('artist', $art);
 	$m->set('title', $title);
 	//$m->set('album', $album);
@@ -22,6 +23,8 @@ if ( $title != $cacheTitle ) {
 	//$cacheAlbum = $m->get('album');
 	$fetchArt = shell_exec('/var/www/html/node_modules/album-art/cli.js "' . $cacheArt . '" "' . $cacheTitle . '"');
 	file_put_contents("img/currentAlbum.png", fopen($fetchArt, 'r+'));
+} else {
+	$m->set('changed', false);
 }
 
 // Output
