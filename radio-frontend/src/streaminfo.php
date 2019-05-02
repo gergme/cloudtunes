@@ -21,8 +21,8 @@ if ( $title != $cacheTitle OR $cacheTitle == null) {
 	$cacheArt = $m->get('artist');
 	$cacheTitle = $m->get('title');
 	//$cacheAlbum = $m->get('album');
-	$fetchArt = shell_exec('/var/www/html/node_modules/album-art/cli.js "' . $cacheArt . '" "' . $cacheTitle . '"');
-	file_put_contents("img/currentAlbum.png", fopen($fetchArt, 'r+'));
+	//$fetchArt = shell_exec('/var/www/html/node_modules/album-art/cli.js "' . $cacheArt . '" "' . $cacheTitle . '"');
+	//file_put_contents("img/currentAlbum.png", fopen($fetchArt, 'r+'));
 } else {
 	$m->set('changed', false);
 }
