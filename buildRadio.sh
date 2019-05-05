@@ -19,7 +19,7 @@ function switchNS {
 
 # Create namespace
 function createNS {
-[ ${LAUNCH_AFTER_BUILD} == "true" ] && kubectl create ns ${LAUNCH_NAMESPACE} && switchNS
+kubectl create ns ${LAUNCH_NAMESPACE} && switchNS
 }
 
 while test $# -gt 0; do
