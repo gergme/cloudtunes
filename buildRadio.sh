@@ -13,7 +13,7 @@ LAUNCH_NAMESPACE="radio"
 LAUNCH_AFTER_BUILD="false"
 
 function check_env() {
-	[ -z ${DOCKER_HOST} ] && { printf "To use your local docker environment, use the --use-sysdocker flag!\n"; exit 1; }
+	[ -z ${DOCKER_HOST} ] && { printf "To use your local docker environment, use the --use-sysdocker flag!\nTo use the minikube docker environment, use 'eval \$(minikube docker-env)'\n"; exit 1; }
 }
 
 function switchNS {
