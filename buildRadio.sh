@@ -12,6 +12,10 @@ command -v kubens >/dev/null 2>&1 || { echo >&2 "I require kubens but it's not i
 LAUNCH_NAMESPACE="radio"
 LAUNCH_AFTER_BUILD="false"
 
+function version() {
+	printf "${0} v0.0.51\n"
+}
+
 function check_env() {
 	[ -z ${DOCKER_HOST} ] && { printf "To use your local docker environment, use the --use-sysdocker flag!\nTo use the minikube docker environment, use 'eval \$(minikube docker-env)'\n"; exit 1; }
 }
@@ -60,7 +64,7 @@ while test $# -gt 0; do
 					exit 0
 					;;
 			-l|--launch)
-					[ $ENV_SKIP = "1" || check_env
+					[[ $ENV_SKIP = "1" ]] || check_env
 					switchNS
 					for MDIR in `ls -d */`; do
 						kubectl create -f ${MDIR}/deploy/
@@ -68,7 +72,7 @@ while test $# -gt 0; do
 					exit 0
 					;;
 			-d|--destroy)
-					[ $ENV_SKIP = "1" || check_env
+					[[ $ENV_SKIP = "1" ]] || check_env
 					switchNS
 					for MDIR in `ls -d */`; do
 						kubectl delete -f ${MDIR}/deploy/
@@ -76,7 +80,7 @@ while test $# -gt 0; do
 					exit 0
 					;;
 			-F|--full)
-					[ $ENV_SKIP = "1" || check_env
+					[[ $ENV_SKIP = "1" ]] || check_env
 					switchNS
 					for MDIR in `ls -d */`; do
                                                 kubectl delete -f ${MDIR}/deploy
@@ -87,7 +91,7 @@ while test $# -gt 0; do
                                         exit 0
                                         ;;
 			-v|--version)
-					echo "0.0.2"
+					version
 					exit 0
 					;;
 			*)
