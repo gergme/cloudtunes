@@ -26,7 +26,7 @@ metadata:
   namespace: radio
   name: radio-fe-app
 spec:
-  type: NodePort
+  type: LoadBalancer
   clusterIP: 10.96.0.100
   ports:
     - protocol: TCP
