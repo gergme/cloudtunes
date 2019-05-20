@@ -5,6 +5,14 @@
 
 ### Installation
 
+#### Easy Method 
+
+The easy way is to use the included buildRadio.sh script, see how to use it with:
+
+```./buildRadio.sh -h```
+
+#### Manual Method
+
 To build the cloudtune images from the Dockerfiles, run the commands:
 
 ```docker build -t icecast:latest ./docker-icecast/```
