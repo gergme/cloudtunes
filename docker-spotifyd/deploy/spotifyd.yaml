@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: spotifyd
+spec:
+  selector:
+    matchLabels:
+      app: spotifyd
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: spotifyd
+    spec:
+      containers:
+      - name: spotifyd
+        image: localhost:5000/docker-spotifyd:latest
+        env:
+        - name: USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: spotifyd-secret
+              key: username
+        - name: PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: spotifyd-secret
+              key: password
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 6767
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: radio
+  name: spotifyd
+spec:
+  type: NodePort
+  clusterIP: 10.96.0.20
+  ports:
+    - protocol: TCP
+      name: http
+      port: 6767
+      nodePort: 30428
+      targetPort: 6767
+  selector:
+    app: spotifyd
+---
